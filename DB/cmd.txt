@@ -1,0 +1,7 @@
+https://github.com/nfunwigabga/designhouse-client
+---------------------------------------------------
+
+git remote add origin https://hamidshahmohamadi@dev.azure.com/hamidshahmohamadi/design-nuxt/_git/design-nuxt
+git push -u origin --all
+
+------------------------------------------
