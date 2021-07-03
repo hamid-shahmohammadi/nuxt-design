@@ -1,7 +1,7 @@
 <template>
   <header class="fixed-topx">
     <nav class="navbar navbar-expand-lg navbar-dark align-items-center">
-      <a href="/" class="navbar-brand text-uppercase fw-500">DesignHouse</a>
+      <nuxt-link :to="{name:'index'}" class="navbar-brand text-uppercase fw-500">DesignHouse</nuxt-link>
       <button
         class="navbar-toggler mr-auto"
         type="button"
@@ -45,6 +45,14 @@
         </div>
       </div>
 
+         <ul class="before-login font-14 fw-300 text-uppercase">
+          <li>
+            <nuxt-link :to="{name:'register'}">Sign Up</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link :to="{name:'login'}">Login</nuxt-link>
+          </li>
+        </ul>
 
       
         <ul class="author-page white-path">
