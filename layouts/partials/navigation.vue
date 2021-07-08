@@ -45,6 +45,8 @@
         </div>
       </div>
 
+
+        <template v-if="!$auth.loggedIn">
          <ul class="before-login font-14 fw-300 text-uppercase">
           <li>
             <nuxt-link :to="{name:'register'}">Sign Up</nuxt-link>
@@ -52,9 +54,10 @@
           <li>
             <nuxt-link :to="{name:'login'}">Login</nuxt-link>
           </li>
-        </ul>
+         </ul>
+        </template>
 
-      
+      <template v-else>
         <ul class="author-page white-path">
           <!-- Profile Dropdown -->
           <li class="dropdown">
@@ -70,10 +73,10 @@
               <img class="user-thumb" src="~/assets/images/profile.png" />
               <div class="usr-info">
                 <span class="user-name font-14 fw-500">
-                  john doe
+                  {{ $auth.user.name }}
                 </span>
                 <span class="user-deg font-10 fw-300">
-                  UI Designer
+                  {{ $auth.user.tagline }}
                 </span>
                 <span class="down-chevron">
                   <i class="fa fa-angle-down"></i>
@@ -105,7 +108,7 @@
           </li>
           <!-- End Profile Dropdown -->
         </ul>
-      
+      </template>
      
     </nav>
   </header>
