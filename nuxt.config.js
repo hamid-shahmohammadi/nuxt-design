@@ -20,6 +20,14 @@ export default {
     ],
     script:[
       {
+        src:
+          'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js'
+      },
+      {
+        src:
+          'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js'
+      },
+      {
         src:'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js'
       }
     ]
@@ -32,6 +40,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vform',
+    '~/plugins/global.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -64,7 +74,7 @@ export default {
         endpoints: {
           login: { url: '/login', method: 'post' },
           logout: { url: '/logout', method: 'post' },
-          me: { url: '/me', method: 'post' }
+          user: { url: '/me', method: 'get' }
         },
         token: {
           property: 'token',

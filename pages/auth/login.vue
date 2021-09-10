@@ -4,44 +4,80 @@
       <h1 class="text-uppercase fw-500 mb-4 text-center font-22">
         Login
       </h1>
-      <form class="auth-form" >
+      <div class="alert alert-danger text-muted text-sm" v-if="form.errors.has('message')"  >
+        {{ form.errors.get('message') }}
+          <nuxt-link :to="{name:'verification.resend'}">Resend verification email</nuxt-link>
+      </div>
+      <form class="auth-form" @submit.prevent="submit" >
         <div class="form-group">
-            <input
-                class="form-control form-control-lg font-14 fw-300"
-                type="text"
-                name="email"
-                placeholder="Email"
-            />
+            <base-input 
+              :form="form"
+              field="email"
+              v-model="form.email"
+              placeholder="Email"
+            ></base-input>
+           
         </div>
         <div class="form-group">
-          <input
-                class="form-control form-control-lg font-14 fw-300"
-                type="password"
-                name="password"
-                placeholder="Password"
-          />
+          <base-input 
+              :form="form"
+              field="password"
+              inputType="password"
+              v-model="form.password"
+              placeholder="Password"
+            ></base-input>
+         
         </div>
         <div class="mt-4 mb-4 clearfix">
-          <a
+          <nuxt-link :to="{name:'password.email'}"
             
             class="forgot-pass color-blue font-14 fw-400"
           >
             Forgot password?
-          </a>
+          </nuxt-link>
         </div>
         <div class="text-right">
-          <button type="submit" 
-            class="btn btn-primary primary-bg-color font-16 fw-500 text-up">
-            Login
-          </button>
+          <base-button :loading="form.busy">Login</base-button>
+          
         </div>
         <p class="font-14 fw-400 text-center mt-4">
           Don't have an account yet?
-          <a  class="color-blue">
+          <nuxt-link :to="{name:'register'}"  class="color-blue">
             Create an account
-          </a>
+          </nuxt-link>
         </p>
       </form>
     </div>
   </section>
 </template>
+<script>
+
+
+export default{
+  middleware:['guest'],
+
+  data(){
+    return {
+      form:this.$vform({
+        email:"",
+        password:"",
+      }),
+      alert:null
+    }
+  },
+  methods:{
+    submit(){
+      this.$auth.loginWith('laravelJWT',{
+        data:this.form
+      })
+      .then(res=>{
+        console.log(res)
+      })
+      .catch(error=>{
+        console.log(error.response.data.errors);
+        this.form.errors.set(error.response.data.errors);
+      });
+    }
+  }
+}
+</script>
