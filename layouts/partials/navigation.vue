@@ -87,18 +87,18 @@
               <div class="dropdown-title-group font-12 fw-500">
                 <span class="dropdown-title text-uppercase">Your Account</span>
               </div>
-              <nuxt-link to="/settings/dashboard" class="dropdown-item mt-28">
+              <NuxtLink to="/settings/dashboard" class="dropdown-item mt-28">
                 <i class="fas fa-tachometer-alt"></i>
                 Dashboard
-              </nuxt-link>
-              <a class="dropdown-item" href="#" title="Profile">
+              </NuxtLink>
+              <NuxtLink to="/settings/profile" class="dropdown-item" href="#" title="Profile">
                 <i class="fa fa-user"></i>
                 Profile
-              </a>
-              <a class="dropdown-item" href="#" title="Setting">
+              </NuxtLink>
+              <NuxtLink to="/settings/dashboard" class="dropdown-item" href="#" title="Setting">
                 <i class="fa fa-cogs"></i>
                 Setting
-              </a>
+              </NuxtLink>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#" @click.prevent="logout">
                 <i class="fa fa-lock"></i>
