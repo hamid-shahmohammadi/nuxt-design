@@ -53,6 +53,11 @@ const routes = [
       ]
     },
     {
+      path: '/designs',
+      name: 'designs.search',
+      component: page('designs/search.vue')
+    },
+    {
       path: '/upload',
       name: 'designs.upload',
       component: page('user/designs/create.vue')
@@ -61,6 +66,11 @@ const routes = [
       path: '/designs/:id/edit',
       name: 'designs.edit',
       component: page('user/designs/edit.vue')
+    },
+    {
+      path: '/design/:slug',
+      name: 'designs.show',
+      component: page('designs/show.vue')
     },
 ];
 

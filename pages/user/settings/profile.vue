@@ -18,7 +18,9 @@
             </div>
 
             <div class="form-group">
-              location
+              <base-gmap 
+                :initialValue="form.formatted_address"
+                @address-response="handleAddress"></base-gmap>
             </div>
 
             <div class="form-group">
@@ -70,8 +72,17 @@ export default {
     };
   },
   methods: {
+    handleAddress(data){
+        this.formatted_address=data.formatted_address;
+        this.form.location={
+          latitude:data.latitude,
+          longitude:data.longitude
+        }
+    },
     update() {
-      
+      this.form.put('/settings/profile')
+      .then(res=>{console.log(res)})
+      .catch(e=>console.log(e))
     },
    
   },
